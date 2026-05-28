@@ -1,4 +1,6 @@
 # CanLegalRAGBench
 Repository for the Paper "CanLegalRAGBench: Evaluating Retrieval-Augmented Generation on Canadian Case Law"
 
-Code and data will be available soon!
+Code will be available soon!
+
+Dataset available at: https://huggingface.co/datasets/ethanz001/CANLegalRagBench
