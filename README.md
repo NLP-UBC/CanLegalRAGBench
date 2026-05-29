@@ -3,4 +3,4 @@ Repository for the Paper "CanLegalRAGBench: Evaluating Retrieval-Augmented Gener
 
 Code will be available soon!
 
-Dataset available at: https://huggingface.co/datasets/ethanz001/CANLegalRagBench
+Dataset available at: [HF](https://huggingface.co/datasets/UBC-VL/CanLegalRAGBench)
