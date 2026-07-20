@@ -1,0 +1,24 @@
+# Query creation (create_queries/)
+dspy-ai>=2.5
+numpy
+pandas
+pyarrow
+python-dotenv
+tqdm
+
+# Retrieval evaluation (evaluate_retrieval/)
+pydantic>=2.0
+pyyaml>=6.0
+torch>=2.0
+faiss-cpu>=1.7
+psutil
+transformers>=4.40
+sentence-transformers>=3.0
+rank-bm25
+nltk
+google-genai          # Gemini embedder/generator
+isaacus               # Kanon2 embedder/reranker
+
+# Generation evaluation (evaluate_generation/)
+ragas>=0.4
+# openai              # only for the judge with --provider openai

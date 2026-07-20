@@ -1,0 +1,39 @@
+# Experiment: Gemini Embedding 2 + recursive 4096-char chunking + 1000 docs
+base_config: ../../configs/base.yaml
+
+experiment_id: gemini2_recursive_4096_1k-docs
+description: "Gemini Embedding 2, recursive 4096-char chunks, 1000-doc corpus"
+
+dataset:
+  max_docs: 1000
+
+chunker:
+  type: chunkers.recursive.RecursiveChunker
+  max_chunk_chars: 4096
+  overlap_chars: 256
+
+embedder:
+  type: embedders.gemini.GeminiEmbedder
+  model_name: gemini-embedding-2
+  task_type: RETRIEVAL_DOCUMENT
+  batch_size: 50
+  max_cost_usd: 10.0
+
+evaluation:
+  queries_path: data/queries.json
+  k_values: [3, 5, 10, 25, 50]
+  metrics:
+    - recall_at_k
+    - doc_recall_at_k
+    - precision_at_k
+    - hit_at_k
+    - mrr
+    - ndcg_at_k
+
+indexing:
+  document_batch_size: 10
+  embedding_batch_size: 50
+  save_intermediate_every: 50
+
+logging:
+  level: DEBUG

@@ -1,0 +1,37 @@
+# Experiment: Kanon2 (legal-domain) + recursive 4096-char chunking + 1000 docs
+base_config: ../../configs/base.yaml
+
+experiment_id: kanon2_recursive_4096_1k-docs
+description: "Kanon2 legal embedder, recursive 4096-char chunks, 1000-doc corpus"
+
+dataset:
+  max_docs: 1000
+
+chunker:
+  type: chunkers.recursive.RecursiveChunker
+  max_chunk_chars: 4096
+  overlap_chars: 256
+
+embedder:
+  type: embedders.kanon2.Kanon2Embedder
+  model_name: kanon-2-embedder
+  batch_size: 64
+  max_cost_usd: 10.0
+
+evaluation:
+  k_values: [3, 5, 10, 20, 50]
+  metrics:
+    - recall_at_k
+    - doc_recall_at_k
+    - precision_at_k
+    - hit_at_k
+    - mrr
+    - ndcg_at_k
+
+indexing:
+  document_batch_size: 10
+  embedding_batch_size: 64
+  save_intermediate_every: 50
+
+logging:
+  level: DEBUG

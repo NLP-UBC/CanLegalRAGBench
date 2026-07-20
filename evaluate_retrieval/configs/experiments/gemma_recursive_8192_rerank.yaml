@@ -1,0 +1,43 @@
+# Experiment: Gemma 300M + recursive 8192-char chunking + Kanon2 reranker + 1000 docs
+base_config: ../../configs/base.yaml
+
+experiment_id: gemma_recursive_8192_rerank_1k-docs
+description: "Gemma 300M embedder, recursive 8192-char chunks, Kanon2 reranker, 1000-doc corpus"
+
+dataset:
+  max_docs: 1000
+
+chunker:
+  type: chunkers.recursive.RecursiveChunker
+  max_chunk_chars: 8192
+  overlap_chars: 256
+
+embedder:
+  type: embedders.gemma.GemmaEmbedder
+  model_name: google/embeddinggemma-300m
+  device: cuda:0
+  task_type: RETRIEVAL_DOCUMENT
+  batch_size: 64
+
+reranker:
+  type: rerankers.kanon2.Kanon2Reranker
+  model_name: kanon-2-reranker
+  batch_size: 100
+
+evaluation:
+  k_values: [3, 5, 10, 25]
+  metrics:
+    - recall_at_k
+    - doc_recall_at_k
+    - precision_at_k
+    - hit_at_k
+    - mrr
+    - ndcg_at_k
+
+indexing:
+  document_batch_size: 10
+  embedding_batch_size: 64
+  save_intermediate_every: 50
+
+logging:
+  level: DEBUG
