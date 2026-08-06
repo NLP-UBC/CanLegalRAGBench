@@ -15,7 +15,7 @@ the seed query instead of the fact variation). That bug is fixed at the source
 in this release, so this step is now only cleaning and grouping.
 
 Usage:
-    python 4_clean_and_group.py \
+    python clean_and_group.py \
         --input-file outputs/query_variations/query_variations.json
 """
 

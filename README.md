@@ -33,9 +33,9 @@ python scripts/run_benchmark.py --config configs/experiments/qwen_recursive_8192
 
 # 3. Generate and judge answers
 cd ../evaluate_generation
-python 1_generate_answers.py --config ../evaluate_retrieval/configs/experiments/qwen_recursive_8192.yaml
-python 2_prepare_eval_input.py --results ../evaluate_retrieval/runs/qwen_recursive_8192_1k-docs/results/query_results.jsonl
-python 3_ragas_answer_eval.py --keep-answers
+python generate_answers.py --config ../evaluate_retrieval/configs/experiments/qwen_recursive_8192.yaml
+python prepare_eval_input.py --results ../evaluate_retrieval/runs/qwen_recursive_8192_1k-docs/results/query_results.jsonl
+python ragas_answer_eval.py --keep-answers
 ```
 
 Each folder's README documents its stage in detail, including required API keys and data

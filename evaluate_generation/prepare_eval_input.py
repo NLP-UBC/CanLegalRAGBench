@@ -9,7 +9,7 @@ the format the ragas judge (step 3) expects:
 
 Usage
 -----
-    python 2_prepare_eval_input.py \
+    python prepare_eval_input.py \
         --results ../evaluate_retrieval/runs/qwen_recursive_8192_1k-docs/results/query_results.jsonl \
         --generator gemini-2.5-flash --retrieval-method qwen_recursive_8192
 """

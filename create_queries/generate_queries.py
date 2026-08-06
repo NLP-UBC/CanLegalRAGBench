@@ -13,8 +13,8 @@ Two document sources are supported:
 English only.
 
 Usage:
-    python 1_generate_queries.py --experiment-name my_run --dataset york
-    python 1_generate_queries.py --experiment-name my_run --dataset caseway \
+    python generate_queries.py --experiment-name my_run --dataset york
+    python generate_queries.py --experiment-name my_run --dataset caseway \
         --caseway-file data/filtered_caseway_data.json
 """
 

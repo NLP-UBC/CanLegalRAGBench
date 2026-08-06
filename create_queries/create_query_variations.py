@@ -17,7 +17,7 @@ variations). Each block of 8 rows is assigned one random Canadian province or
 territory (used as retrieval context by the benchmark).
 
 Usage:
-    python 3_create_query_variations.py --experiment-name query_variations \
+    python create_query_variations.py --experiment-name query_variations \
         --input-csvs outputs/caseway_run/readable_judged_validation_set_caseway.csv \
                      outputs/york_run/readable_judged_validation_set_york.csv
 """

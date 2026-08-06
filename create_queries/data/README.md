@@ -38,4 +38,4 @@ single JSON file (`data/filtered_caseway_data.json`): a list of records with the
 
 Before query generation, the corpus was pre-filtered to documents whose word counts fall
 between the corpus's first and third length quartiles (the same filter
-`1_generate_queries.py` applies to the York data automatically).
+`generate_queries.py` applies to the York data automatically).

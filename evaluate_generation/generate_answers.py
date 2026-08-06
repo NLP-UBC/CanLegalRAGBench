@@ -11,14 +11,14 @@ and index are read from there).
 
 Usage
 -----
-    python 1_generate_answers.py \
+    python generate_answers.py \
         --config ../evaluate_retrieval/configs/experiments/qwen_recursive_8192.yaml
 
     # Override model or token budget:
-    python 1_generate_answers.py --config ... --model gemini-2.5-pro --token-budget 64000
+    python generate_answers.py --config ... --model gemini-2.5-pro --token-budget 64000
 
     # Test on 5 queries:
-    python 1_generate_answers.py --config ... --max-queries 5
+    python generate_answers.py --config ... --max-queries 5
 
 Requires: GOOGLE_API_KEY or GEMINI_API_KEY
 """

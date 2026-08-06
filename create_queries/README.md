@@ -11,18 +11,18 @@ is outside this repo — see the note at the bottom).
 court decisions (york parquet / caseway JSON)
         │
         ▼
-1_generate_queries.py        persona-conditioned query generation (2 queries/doc:
+generate_queries.py        persona-conditioned query generation (2 queries/doc:
         │                    layperson + legal associate, random Big Five traits,
         │                    random target section)
         ▼
-2_filter_by_judge.py         LLM judge keeps/rejects each (query, document) pair;
+filter_by_judge.py         LLM judge keeps/rejects each (query, document) pair;
         │                    readable output keeps layperson queries only
         ▼
-3_create_query_variations.py each seed query → block of 8 variations
+create_query_variations.py each seed query → block of 8 variations
         │                    (2 fact variations × [base + 3 situation variations]),
         │                    each judged and lightly repaired; random province per block
         ▼
-4_clean_and_group.py         normalize law-area labels; group blocks by law area
+clean_and_group.py         normalize law-area labels; group blocks by law area
         │                    for efficient annotation
         ▼
 annotation-ready query file (query_variations_cleaned.json)
@@ -48,20 +48,20 @@ together directly. Run everything from this folder.
 
 ```bash
 # 1. Generate candidate queries from each document source
-python 1_generate_queries.py -exp york_run -d york --num-samples 200
-python 1_generate_queries.py -exp caseway_run -d caseway --caseway-file data/filtered_caseway_data.json
+python generate_queries.py -exp york_run -d york --num-samples 200
+python generate_queries.py -exp caseway_run -d caseway --caseway-file data/filtered_caseway_data.json
 
 # 2. Judge each (query, document) pair
-python 2_filter_by_judge.py -exp york_run -d york -in outputs/york_run/validation_set_york.json
-python 2_filter_by_judge.py -exp caseway_run -d caseway -in outputs/caseway_run/validation_set_caseway.json
+python filter_by_judge.py -exp york_run -d york -in outputs/york_run/validation_set_york.json
+python filter_by_judge.py -exp caseway_run -d caseway -in outputs/caseway_run/validation_set_caseway.json
 
 # 3. Expand seeds into variation blocks (both sources combined)
-python 3_create_query_variations.py -exp query_variations \
+python create_query_variations.py -exp query_variations \
     -in outputs/caseway_run/readable_judged_validation_set_caseway.csv \
         outputs/york_run/readable_judged_validation_set_york.csv
 
 # 4. Clean and group for annotation
-python 4_clean_and_group.py -in outputs/query_variations/query_variations.json
+python clean_and_group.py -in outputs/query_variations/query_variations.json
 ```
 
 ## The original run

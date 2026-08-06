@@ -2,7 +2,7 @@
 
 `LegalJudge` audits a generated query against its source document and returns a
 Keep/Reject verdict based on a modular list of criteria. Used by
-`2_filter_by_judge.py` to filter generated queries before human annotation.
+`filter_by_judge.py` to filter generated queries before human annotation.
 """
 
 from typing import List

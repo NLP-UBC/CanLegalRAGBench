@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Step 3: Judge generated answers against the reference answers with Ragas.
 
-For each record (from 2_prepare_eval_input.py), scores the generated answer's
+For each record (from prepare_eval_input.py), scores the generated answer's
 groundedness in the human-written reference answer using Ragas
 ResponseGroundedness (two-judge, 0-1 scale), and optionally factual precision
 via Ragas FactualCorrectness (claim decomposition + per-claim NLI verdicts,
@@ -14,7 +14,7 @@ every judge call.
 
 Usage
 -----
-    python 3_ragas_answer_eval.py --input outputs/answers.jsonl --keep-answers
+    python ragas_answer_eval.py --input outputs/answers.jsonl --keep-answers
 
 """
 from __future__ import annotations

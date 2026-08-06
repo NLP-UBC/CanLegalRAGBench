@@ -9,15 +9,15 @@ results, then judged against the human-written reference answers with Ragas.
 ../evaluate_retrieval/runs/<experiment>/results/query_results.jsonl
         │
         ▼
-1_generate_answers.py     build context from the retrieved chunks (full documents
+generate_answers.py     build context from the retrieved chunks (full documents
         │                 when they fit a 115k-token budget, otherwise chunks +
         │                 truncated documents) and generate an answer per query
         │                 with Gemini; answers are written back into query_results.jsonl
         ▼
-2_prepare_eval_input.py   join generated answers with the benchmark's reference
+prepare_eval_input.py   join generated answers with the benchmark's reference
         │                 answers → outputs/answers.jsonl
         ▼
-3_ragas_answer_eval.py    Ragas judge: groundedness of the generated answer in the
+ragas_answer_eval.py    Ragas judge: groundedness of the generated answer in the
                           reference answer (dual-judge, 0-1), optionally factual
                           precision (claim decomposition + per-claim NLI verdicts)
 ```
@@ -37,16 +37,16 @@ saves by default).
 
 ```bash
 # 1. Generate answers for a retrieval run
-python 1_generate_answers.py \
+python generate_answers.py \
     --config ../evaluate_retrieval/configs/experiments/qwen_recursive_8192.yaml
 
 # 2. Join with the reference answers
-python 2_prepare_eval_input.py \
+python prepare_eval_input.py \
     --results ../evaluate_retrieval/runs/qwen_recursive_8192_1k-docs/results/query_results.jsonl \
     --generator gemini-2.5-flash --retrieval-method qwen_recursive_8192
 
 # 3. Judge with Ragas (gemini-2.5-pro judge by default)
-python 3_ragas_answer_eval.py --keep-answers --also-factual-precision
+python ragas_answer_eval.py --keep-answers --also-factual-precision
 ```
 
 Outputs land in `outputs/`: per-row scores (`groundedness_scores.jsonl` / `.csv`) and an

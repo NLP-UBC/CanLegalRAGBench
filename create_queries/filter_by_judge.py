@@ -12,7 +12,7 @@ Outputs (all CSV, in outputs/<experiment-name>/):
   rebalance the 2x TCC oversampling from step 1
 
 Usage:
-    python 2_filter_by_judge.py --experiment-name my_run --dataset york \
+    python filter_by_judge.py --experiment-name my_run --dataset york \
         --input-file outputs/my_run/validation_set_york.json
 """
 
