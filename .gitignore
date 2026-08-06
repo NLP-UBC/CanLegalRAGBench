@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# CanLegalRAGBench: generated outputs and local document data
+outputs/
+create_queries/data/*
+!create_queries/data/README.md
+create_retrieval_dataset/data/*
+!create_retrieval_dataset/data/README.md
+evaluate_retrieval/data/*
+!evaluate_retrieval/data/README.md
+runs/
